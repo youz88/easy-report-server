@@ -1,0 +1,13 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/test?useSSL=false&useUnicode=true&characterEncoding=UTF-8&nullCatalogMeansCurrent=true
+    username: root
+    password: root
+  messages:
+    basename: i18n/message
+    encoding: UTF-8
+  profiles:
+    active: dev
