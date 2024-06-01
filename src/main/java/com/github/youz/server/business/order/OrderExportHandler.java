@@ -45,11 +45,13 @@ public class OrderExportHandler extends AbstractDataAssemblyExportHandler {
 
     @Override
     protected ExportData handleData(ExportContext context) {
-        // 查询商户列表
+        // 查询订单列表
         PageVO<OrderRespDTO> pageDTO = mockRemoteData.orderPageInfo(context.getQueryParam(), context.getPageNum(), context.getPageSize());
         if (Objects.isNull(pageDTO) || CollectionUtils.isEmpty(pageDTO.getList())) {
             return null;
         }
+
+        // 查询依赖数据, 如订单只有用户ID, 需要展示用户名称则可以在此处查询用户服务
 
         // 组装表体
         AbstractExportModel abstractExport = OrderBO.assemblyData(pageDTO.getList(), context);

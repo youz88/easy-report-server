@@ -46,21 +46,19 @@ public class OrderBO extends AbstractExportModel {
     public static AbstractExportModel assemblyData(List<OrderRespDTO> sourceList, ExportContext context) {
         int rowIndex = context.getRowIndex();
 
-        // 1. 组装依赖信息
-
-        // 2. 初始化导出对象
-        OrderBO result = new OrderBO();
+        // 1. 初始化导出模版对象
         List<ExportTemplate> dataList = new ArrayList<>();
 
-        // 3. 格式化导出模板
+        // 2. 格式化导出模板
         for (OrderRespDTO source : sourceList) {
             ExportTemplate exportTemplate = JsonUtil.convert(source, ExportTemplate.class);
             exportTemplate.setIndex(String.valueOf(rowIndex++));
             dataList.add(exportTemplate);
         }
 
-        return result.setDataList(dataList)
-                .filterData(context.getFieldList());
+        // 3. 返回导出业务对象, 过滤导出字段
+        return new OrderBO()
+                .filterData(dataList, context.getFieldList());
     }
 
     @Data
