@@ -3,9 +3,9 @@ package com.github.youz.server.data.impl;
 import com.github.youz.report.util.DateUtil;
 import com.github.youz.report.util.JsonUtil;
 import com.github.youz.report.web.vo.PageVO;
-import com.github.youz.server.business.goods.GoodsReqDTO;
-import com.github.youz.server.business.goods.GoodsRespDTO;
-import com.github.youz.server.business.goods.PayTypeRespDTO;
+import com.github.youz.server.business.export.goods.GoodsReqDTO;
+import com.github.youz.server.business.export.goods.GoodsRespDTO;
+import com.github.youz.server.business.export.goods.PayTypeRespDTO;
 import com.github.youz.server.data.GoodsData;
 import org.springframework.stereotype.Component;
 

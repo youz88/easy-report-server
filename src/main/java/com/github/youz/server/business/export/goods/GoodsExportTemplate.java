@@ -1,4 +1,4 @@
-package com.github.youz.server.business.goods;
+package com.github.youz.server.business.export.goods;
 
 import com.alibaba.excel.annotation.ExcelProperty;
 import com.github.youz.report.annotation.DateTimeFormat;
@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
  */
 @Data
 @Accessors(chain = true)
-public class GoodsTemplate {
+public class GoodsExportTemplate {
 
     @DateTimeFormat(value = "yyyy-MM-dd HH:mm:ss")
     @ExcelProperty("售卖时间")
@@ -53,9 +53,9 @@ public class GoodsTemplate {
                 .map(payType -> DynamicColumn.buildHead(payType.getPayTypeId(),
                         "支付方式", payType.getPayTypeName()))
                 .collect(Collectors.toList());
-        GoodsTemplate goodsTemplate = new GoodsTemplate()
+        GoodsExportTemplate goodsExportTemplate = new GoodsExportTemplate()
                 .setPayList(payList);
-        return BasicExportTemplate.assemblyDynamicHead(goodsTemplate, context);
+        return BasicExportTemplate.assemblyDynamicHead(goodsExportTemplate, context);
     }
 
     /**
@@ -67,14 +67,14 @@ public class GoodsTemplate {
      */
     public static BasicExportTemplate assemblyData(List<GoodsRespDTO> sourceList, ExportContext context) {
         // 获取动态模版对象
-        GoodsTemplate dynamicTemplate = (GoodsTemplate) context.getDynamicTemplate();
+        GoodsExportTemplate dynamicTemplate = (GoodsExportTemplate) context.getDynamicTemplate();
 
         // 1. 初始化导出模版对象
-        List<GoodsTemplate> dataList = new ArrayList<>();
+        List<GoodsExportTemplate> dataList = new ArrayList<>();
 
         // 2. 格式化导出模板
         for (GoodsRespDTO source : sourceList) {
-            GoodsTemplate exportTemplate = JsonUtil.convert(source, GoodsTemplate.class);
+            GoodsExportTemplate exportTemplate = JsonUtil.convert(source, GoodsExportTemplate.class);
 
             // 设置动态列标题数据
             List<DynamicColumn> payTypeList = dynamicTemplate.getPayList().stream()

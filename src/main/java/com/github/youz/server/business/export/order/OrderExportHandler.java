@@ -1,4 +1,4 @@
-package com.github.youz.server.business.order;
+package com.github.youz.server.business.export.order;
 
 import com.github.youz.report.constant.ReportConst;
 import com.github.youz.report.enums.BusinessType;
@@ -39,7 +39,7 @@ public class OrderExportHandler extends AbstractDataAssemblyExportHandler {
     @Override
     protected ExportHead handleHead(ExportContext context) {
         // 组装表头
-        BasicExportTemplate exportTemplate = OrderTemplate.assemblyHead(context);
+        BasicExportTemplate exportTemplate = OrderExportTemplate.assemblyHead(context);
 
         // 返回表头对象
         return ExportHead.assemblyData(exportTemplate, context);
@@ -56,7 +56,7 @@ public class OrderExportHandler extends AbstractDataAssemblyExportHandler {
         // 查询依赖数据, 如订单只有用户ID, 需要展示用户名称则可以在此处查询用户服务
 
         // 组装表体
-        BasicExportTemplate exportTemplate = OrderTemplate.assemblyData(pageDTO.getList(), context);
+        BasicExportTemplate exportTemplate = OrderExportTemplate.assemblyData(pageDTO.getList(), context);
 
         // 返回表体对象
         return ExportData.assemblyData(exportTemplate);

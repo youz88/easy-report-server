@@ -1,4 +1,4 @@
-package com.github.youz.server.business.order;
+package com.github.youz.server.business.export.order;
 
 import com.alibaba.excel.annotation.ExcelProperty;
 import com.github.youz.report.annotation.DateTimeFormat;
@@ -19,7 +19,7 @@ import java.util.List;
  */
 @Data
 @Accessors(chain = true)
-public class OrderTemplate {
+public class OrderExportTemplate {
 
     @ExcelProperty("序号")
     private String index;
@@ -46,7 +46,7 @@ public class OrderTemplate {
      * @return 表头
      */
     public static BasicExportTemplate assemblyHead(ExportContext context) {
-        return BasicExportTemplate.assemblyFixHead(OrderTemplate.class, context);
+        return BasicExportTemplate.assemblyFixHead(OrderExportTemplate.class, context);
     }
 
     /**
@@ -60,11 +60,11 @@ public class OrderTemplate {
         int rowIndex = context.getRowIndex();
 
         // 1. 初始化导出模版对象
-        List<OrderTemplate> dataList = new ArrayList<>();
+        List<OrderExportTemplate> dataList = new ArrayList<>();
 
         // 2. 格式化导出模板
         for (OrderRespDTO source : sourceList) {
-            OrderTemplate exportTemplate = JsonUtil.convert(source, OrderTemplate.class);
+            OrderExportTemplate exportTemplate = JsonUtil.convert(source, OrderExportTemplate.class);
             exportTemplate.setIndex(String.valueOf(rowIndex++));
             dataList.add(exportTemplate);
         }

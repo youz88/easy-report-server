@@ -1,12 +1,12 @@
-package com.github.youz.server.business.goods;
+package com.github.youz.server.business.export.order;
 
 import lombok.Data;
 
 /**
- * 商品销售请求DTO
+ * 订单请求DTO
  */
 @Data
-public class GoodsReqDTO {
+public class OrderReqDTO {
 
     /**
      * 页码

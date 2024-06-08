@@ -1,4 +1,4 @@
-package com.github.youz.server.business.goods;
+package com.github.youz.server.business.export.goods;
 
 import com.github.youz.report.constant.ReportConst;
 import com.github.youz.report.enums.BusinessType;
@@ -38,7 +38,7 @@ public class GoodsHandler extends AbstractDataAssemblyExportHandler {
         List<PayTypeRespDTO> payTypeList = goodsData.payTypeList(context.getQueryParam());
 
         // 组装表头
-        BasicExportTemplate exportTemplate = GoodsTemplate.assemblyHead(context, payTypeList);
+        BasicExportTemplate exportTemplate = GoodsExportTemplate.assemblyHead(context, payTypeList);
 
         // 返回表头对象
         return ExportHead.assemblyData(exportTemplate, context);
@@ -53,7 +53,7 @@ public class GoodsHandler extends AbstractDataAssemblyExportHandler {
         }
 
         // 组装表体
-        BasicExportTemplate exportTemplate = GoodsTemplate.assemblyData(pageDTO.getList(), context);
+        BasicExportTemplate exportTemplate = GoodsExportTemplate.assemblyData(pageDTO.getList(), context);
 
         // 返回表体对象
         return ExportData.assemblyData(exportTemplate);

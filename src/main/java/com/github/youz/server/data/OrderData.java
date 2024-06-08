@@ -1,7 +1,7 @@
 package com.github.youz.server.data;
 
 import com.github.youz.report.web.vo.PageVO;
-import com.github.youz.server.business.order.OrderRespDTO;
+import com.github.youz.server.business.export.order.OrderRespDTO;
 
 public interface OrderData {
 
