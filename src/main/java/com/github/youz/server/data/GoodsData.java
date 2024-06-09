@@ -1,8 +1,8 @@
 package com.github.youz.server.data;
 
 import com.github.youz.report.web.vo.PageVO;
-import com.github.youz.server.business.export.goods.GoodsRespDTO;
-import com.github.youz.server.business.export.goods.PayTypeRespDTO;
+import com.github.youz.server.dto.GoodsRespDTO;
+import com.github.youz.server.dto.PayTypeRespDTO;
 
 import java.util.List;
 

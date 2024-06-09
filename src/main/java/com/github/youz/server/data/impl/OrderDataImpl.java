@@ -1,9 +1,11 @@
 package com.github.youz.server.data.impl;
 
+import com.github.youz.report.imports.bo.ImportInvokeResult;
 import com.github.youz.report.util.DateUtil;
 import com.github.youz.report.web.vo.PageVO;
-import com.github.youz.server.business.export.order.OrderReqDTO;
-import com.github.youz.server.business.export.order.OrderRespDTO;
+import com.github.youz.server.business.imports.order.OrderImportTemplate;
+import com.github.youz.server.dto.OrderReqDTO;
+import com.github.youz.server.dto.OrderRespDTO;
 import com.github.youz.server.data.OrderData;
 import org.springframework.stereotype.Component;
 
@@ -32,6 +34,19 @@ public class OrderDataImpl implements OrderData {
 
         // local
         return mockOrderData(reqDTO);
+    }
+
+    @Override
+    public List<ImportInvokeResult.DataStatus> invokeCheckMethod(List<OrderImportTemplate> dataList) {
+        // 调用业务校验方法
+
+        // 如果网络异常，则返回网络错误
+        return ImportInvokeResult.networkError(dataList);
+    }
+
+    @Override
+    public void invokeImportMethod(List<OrderImportTemplate> dataList) {
+        // 导入数据. 建议采用MQ异步处理, 由业务保证最终一致性
     }
 
     /**

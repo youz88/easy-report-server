@@ -7,6 +7,8 @@ import com.github.youz.report.export.bo.BasicExportTemplate;
 import com.github.youz.report.export.bo.DynamicColumn;
 import com.github.youz.report.export.bo.ExportContext;
 import com.github.youz.report.util.JsonUtil;
+import com.github.youz.server.dto.GoodsRespDTO;
+import com.github.youz.server.dto.PayTypeRespDTO;
 import lombok.Data;
 import lombok.experimental.Accessors;
 

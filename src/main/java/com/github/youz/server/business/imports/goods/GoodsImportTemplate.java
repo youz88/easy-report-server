@@ -5,6 +5,9 @@ import com.github.youz.report.imports.bo.BasicImportTemplate;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+/**
+ * 商品导入模板(classpath: test/goods.xls)
+ */
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class GoodsImportTemplate extends BasicImportTemplate {

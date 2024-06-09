@@ -10,6 +10,9 @@ import lombok.EqualsAndHashCode;
 import java.math.BigDecimal;
 import java.util.List;
 
+/**
+ * 动态导入模板(classpath: test/dynamic.xlsx)
+ */
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class DynamicImportTemplate extends BasicImportTemplate {

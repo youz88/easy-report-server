@@ -9,6 +9,8 @@ import com.github.youz.report.export.bo.ExportHead;
 import com.github.youz.report.export.handler.AbstractDataAssemblyExportHandler;
 import com.github.youz.report.web.vo.PageVO;
 import com.github.youz.server.data.GoodsData;
+import com.github.youz.server.dto.GoodsRespDTO;
+import com.github.youz.server.dto.PayTypeRespDTO;
 import com.github.youz.server.enums.CustomBusinessType;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.collections4.CollectionUtils;
@@ -22,7 +24,7 @@ import java.util.Objects;
  */
 @Component
 @RequiredArgsConstructor
-public class GoodsHandler extends AbstractDataAssemblyExportHandler {
+public class GoodsExportHandler extends AbstractDataAssemblyExportHandler {
 
     private final GoodsData goodsData;
 

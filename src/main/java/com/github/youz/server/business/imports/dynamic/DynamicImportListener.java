@@ -14,7 +14,7 @@ public class DynamicImportListener extends AbstractPartSuccessBusinessListener<D
 
     @Override
     protected List<ImportInvokeResult.DataStatus> invokeCheckMethod(List<DynamicImportTemplate> dataList) {
-        return ImportInvokeResult.networkError(dataList);
+        return null;
     }
 
     @Override
@@ -24,6 +24,7 @@ public class DynamicImportListener extends AbstractPartSuccessBusinessListener<D
 
     @Override
     protected void listenerRowConfig() {
+        // 默认表头起始行号为1, 表体起始行号为2. 可根据实际需要调整
         setHeadRowIndex(1);
         setBodyRowIndex(3);
     }

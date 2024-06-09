@@ -1,4 +1,4 @@
-package com.github.youz.server.business.export.goods;
+package com.github.youz.server.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
