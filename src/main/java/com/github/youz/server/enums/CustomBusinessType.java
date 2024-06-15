@@ -15,6 +15,8 @@ public enum CustomBusinessType implements BusinessType {
 
     GOODS(2, "商品"),
 
+    DYNAMIC(3, "动态列"),
+
     ;
 
     /**

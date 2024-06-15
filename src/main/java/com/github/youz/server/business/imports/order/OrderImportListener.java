@@ -1,18 +1,17 @@
 package com.github.youz.server.business.imports.order;
 
-import com.github.youz.report.imports.bo.ImportContext;
+import com.github.youz.report.enums.BusinessType;
 import com.github.youz.report.imports.bo.ImportInvokeResult;
 import com.github.youz.report.imports.listener.AbstractPartSuccessBusinessListener;
 import com.github.youz.report.util.ApplicationContextUtil;
 import com.github.youz.server.data.OrderData;
+import com.github.youz.server.enums.CustomBusinessType;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class OrderImportListener extends AbstractPartSuccessBusinessListener<OrderImportTemplate> {
-
-    public OrderImportListener(Class<OrderImportTemplate> clazz, ImportContext importContext) {
-        super(clazz, importContext);
-    }
 
     @Override
     protected List<ImportInvokeResult.DataStatus> invokeCheckMethod(List<OrderImportTemplate> dataList) {
@@ -25,4 +24,8 @@ public class OrderImportListener extends AbstractPartSuccessBusinessListener<Ord
         ApplicationContextUtil.getBean(OrderData.class).invokeImportMethod(dataList);
     }
 
+    @Override
+    public BusinessType businessType() {
+        return CustomBusinessType.ORDER;
+    }
 }

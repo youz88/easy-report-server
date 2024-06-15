@@ -4,7 +4,7 @@ import com.alibaba.excel.annotation.ExcelProperty;
 import com.github.youz.report.annotation.DateTimeFormat;
 import com.github.youz.report.constant.ReportConst;
 import com.github.youz.report.export.bo.BasicExportTemplate;
-import com.github.youz.report.export.bo.DynamicColumn;
+import com.github.youz.report.export.bo.ExportDynamicColumn;
 import com.github.youz.report.export.bo.ExportContext;
 import com.github.youz.report.util.JsonUtil;
 import com.github.youz.server.dto.GoodsRespDTO;
@@ -41,7 +41,7 @@ public class GoodsExportTemplate {
      * 支付信息
      */
     @ExcelProperty
-    private List<DynamicColumn> payList;
+    private List<ExportDynamicColumn> payList;
 
     /**
      * 构造导出导出表头
@@ -51,8 +51,8 @@ public class GoodsExportTemplate {
      * @return 表头
      */
     public static BasicExportTemplate assemblyHead(ExportContext context, List<PayTypeRespDTO> payTypeList) {
-        List<DynamicColumn> payList = payTypeList.stream()
-                .map(payType -> DynamicColumn.buildHead(payType.getPayTypeId(),
+        List<ExportDynamicColumn> payList = payTypeList.stream()
+                .map(payType -> ExportDynamicColumn.buildHead(payType.getPayTypeId(),
                         "支付方式", payType.getPayTypeName()))
                 .collect(Collectors.toList());
         GoodsExportTemplate goodsExportTemplate = new GoodsExportTemplate()
@@ -79,9 +79,9 @@ public class GoodsExportTemplate {
             GoodsExportTemplate exportTemplate = JsonUtil.convert(source, GoodsExportTemplate.class);
 
             // 设置动态列标题数据
-            List<DynamicColumn> payTypeList = dynamicTemplate.getPayList().stream()
+            List<ExportDynamicColumn> payTypeList = dynamicTemplate.getPayList().stream()
                     .map(payType -> {
-                        DynamicColumn dynamicColumn = JsonUtil.convert(payType, DynamicColumn.class);
+                        ExportDynamicColumn dynamicColumn = JsonUtil.convert(payType, ExportDynamicColumn.class);
 
                         // 根据唯一表示判断是否匹配支付类型
                         if (source.getPayType().equals(dynamicColumn.getUniqueKey())) {
