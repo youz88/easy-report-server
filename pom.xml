@@ -32,7 +32,7 @@
 
         <dependency>
             <groupId>com.github.youz</groupId>
-            <artifactId>easy-report</artifactId>
+            <artifactId>easy-report-starter</artifactId>
             <version>1.0.0</version>
         </dependency>
 
